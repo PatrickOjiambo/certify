@@ -8,12 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@hookform/resolvers':
+        specifier: ^3.3.4
+        version: 3.3.4(react-hook-form@7.51.4(react@18.3.1))
       '@tanstack/react-query':
         specifier: ^5.35.1
         version: 5.35.1(react@18.3.1)
       '@web3modal/wagmi':
         specifier: ^4.1.11
-        version: 4.1.11(@types/react@18.3.1)(@wagmi/connectors@4.3.3(@types/react@18.3.1)(@wagmi/core@2.9.1(@tanstack/query-core@5.35.1)(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6))(zod@3.23.6))(bufferutil@4.0.8)(react-dom@18.3.1(react@18.3.1))(react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6))(zod@3.23.6))(@wagmi/core@2.9.1(@tanstack/query-core@5.35.1)(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6))(zod@3.23.6))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6))
+        version: 4.1.11(@types/react@18.3.1)(@wagmi/connectors@4.3.3(@types/react@18.3.1)(@wagmi/core@2.9.1(@tanstack/query-core@5.35.1)(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7))(zod@3.23.7))(bufferutil@4.0.8)(react-dom@18.3.1(react@18.3.1))(react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7))(zod@3.23.7))(@wagmi/core@2.9.1(@tanstack/query-core@5.35.1)(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7))(zod@3.23.7))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7))
       next:
         specifier: 14.2.3
         version: 14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -23,12 +26,18 @@ importers:
       react-dom:
         specifier: ^18
         version: 18.3.1(react@18.3.1)
+      react-hook-form:
+        specifier: ^7.51.4
+        version: 7.51.4(react@18.3.1)
       viem:
         specifier: ^2.10.1
-        version: 2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6)
+        version: 2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7)
       wagmi:
         specifier: ^2.8.1
-        version: 2.8.1(@tanstack/query-core@5.35.1)(@tanstack/react-query@5.35.1(react@18.3.1))(@types/react@18.3.1)(bufferutil@4.0.8)(react-dom@18.3.1(react@18.3.1))(react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6))(zod@3.23.6)
+        version: 2.8.1(@tanstack/query-core@5.35.1)(@tanstack/react-query@5.35.1(react@18.3.1))(@types/react@18.3.1)(bufferutil@4.0.8)(react-dom@18.3.1(react@18.3.1))(react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7))(zod@3.23.7)
+      zod:
+        specifier: ^3.23.7
+        version: 3.23.7
     devDependencies:
       '@types/node':
         specifier: ^20
@@ -973,6 +982,11 @@ packages:
 
   '@hapi/topo@5.1.0':
     resolution: {integrity: sha512-foQZKJig7Ob0BMAYBfcJk8d77QtOe7Wo4ox7ff1lQYoNNAb6jwcY1ncdoy2e9wQZzvNy7ODZCYJkK8kzmcAnAg==}
+
+  '@hookform/resolvers@3.3.4':
+    resolution: {integrity: sha512-o5cgpGOuJYrd+iMKvkttOclgwRW86EsWJZZRC23prf0uU2i48Htq4PuT73AVb9ionFyZrwYEITuOFGF+BydEtQ==}
+    peerDependencies:
+      react-hook-form: ^7.0.0
 
   '@humanwhocodes/config-array@0.11.14':
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
@@ -4179,6 +4193,12 @@ packages:
     peerDependencies:
       react: ^18.3.1
 
+  react-hook-form@7.51.4:
+    resolution: {integrity: sha512-V14i8SEkh+V1gs6YtD0hdHYnoL4tp/HX/A45wWQN15CYr9bFRmmRdYStSO5L65lCCZRF+kYiSKhm9alqbcdiVA==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+
   react-i18next@13.5.0:
     resolution: {integrity: sha512-CFJ5NDGJ2MUyBohEHxljOq/39NQ972rh1ajnadG9BjTk+UXbHLq4z5DKEbEQBDoIhUmmbuS/fIMJKo6VOax1HA==}
     peerDependencies:
@@ -5118,8 +5138,8 @@ packages:
   zod@3.22.4:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
 
-  zod@3.23.6:
-    resolution: {integrity: sha512-RTHJlZhsRbuA8Hmp/iNL7jnfc4nZishjsanDAfEY1QpDQZCahUp3xDzl+zfweE9BklxMUcgBgS1b7Lvie/ZVwA==}
+  zod@3.23.7:
+    resolution: {integrity: sha512-NBeIoqbtOiUMomACV/y+V3Qfs9+Okr18vR5c/5pHClPpufWOrsx8TENboDPe265lFdfewX2yBtNTLPvnmCxwog==}
 
   zustand@4.4.1:
     resolution: {integrity: sha512-QCPfstAS4EBiTQzlaGP1gmorkh/UL1Leaj2tdj+zZCZ/9bm0WS7sI2wnfD5lpOszFqWJ1DcPnGoY8RDL61uokw==}
@@ -6143,6 +6163,10 @@ snapshots:
     dependencies:
       '@hapi/hoek': 9.3.0
 
+  '@hookform/resolvers@3.3.4(react-hook-form@7.51.4(react@18.3.1))':
+    dependencies:
+      react-hook-form: 7.51.4(react@18.3.1)
+
   '@humanwhocodes/config-array@0.11.14':
     dependencies:
       '@humanwhocodes/object-schema': 2.0.3
@@ -6855,9 +6879,9 @@ snapshots:
 
   '@rushstack/eslint-patch@1.10.2': {}
 
-  '@safe-global/safe-apps-provider@0.18.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6)':
+  '@safe-global/safe-apps-provider@0.18.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7)':
     dependencies:
-      '@safe-global/safe-apps-sdk': 8.1.0(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6)
+      '@safe-global/safe-apps-sdk': 8.1.0(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7)
       events: 3.3.0
     transitivePeerDependencies:
       - bufferutil
@@ -6865,10 +6889,10 @@ snapshots:
       - utf-8-validate
       - zod
 
-  '@safe-global/safe-apps-sdk@8.1.0(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6)':
+  '@safe-global/safe-apps-sdk@8.1.0(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7)':
     dependencies:
       '@safe-global/safe-gateway-typescript-sdk': 3.21.1
-      viem: 1.21.4(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6)
+      viem: 1.21.4(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7)
     transitivePeerDependencies:
       - bufferutil
       - typescript
@@ -7120,7 +7144,7 @@ snapshots:
 
   '@wagmi/cli@2.1.4(bufferutil@4.0.8)(typescript@5.4.5)':
     dependencies:
-      abitype: 0.9.10(typescript@5.4.5)(zod@3.23.6)
+      abitype: 0.9.10(typescript@5.4.5)(zod@3.23.7)
       bundle-require: 4.1.0(esbuild@0.19.12)
       cac: 6.7.14
       change-case: 4.1.2
@@ -7137,24 +7161,24 @@ snapshots:
       pathe: 1.1.2
       picocolors: 1.0.0
       prettier: 3.2.5
-      viem: 2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6)
-      zod: 3.23.6
+      viem: 2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7)
+      zod: 3.23.7
     optionalDependencies:
       typescript: 5.4.5
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@wagmi/connectors@4.3.3(@types/react@18.3.1)(@wagmi/core@2.9.1(@tanstack/query-core@5.35.1)(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6))(zod@3.23.6))(bufferutil@4.0.8)(react-dom@18.3.1(react@18.3.1))(react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6))(zod@3.23.6)':
+  '@wagmi/connectors@4.3.3(@types/react@18.3.1)(@wagmi/core@2.9.1(@tanstack/query-core@5.35.1)(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7))(zod@3.23.7))(bufferutil@4.0.8)(react-dom@18.3.1(react@18.3.1))(react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7))(zod@3.23.7)':
     dependencies:
       '@coinbase/wallet-sdk': 3.9.1
       '@metamask/sdk': 0.18.6(bufferutil@4.0.8)(react-dom@18.3.1(react@18.3.1))(react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1)
-      '@safe-global/safe-apps-provider': 0.18.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6)
-      '@safe-global/safe-apps-sdk': 8.1.0(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6)
-      '@wagmi/core': 2.9.1(@tanstack/query-core@5.35.1)(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6))(zod@3.23.6)
+      '@safe-global/safe-apps-provider': 0.18.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7)
+      '@safe-global/safe-apps-sdk': 8.1.0(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7)
+      '@wagmi/core': 2.9.1(@tanstack/query-core@5.35.1)(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7))(zod@3.23.7)
       '@walletconnect/ethereum-provider': 2.11.2(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)
       '@walletconnect/modal': 2.6.2(@types/react@18.3.1)(react@18.3.1)
-      viem: 2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6)
+      viem: 2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7)
     optionalDependencies:
       typescript: 5.4.5
     transitivePeerDependencies:
@@ -7184,11 +7208,11 @@ snapshots:
       - utf-8-validate
       - zod
 
-  '@wagmi/core@2.9.1(@tanstack/query-core@5.35.1)(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6))(zod@3.23.6)':
+  '@wagmi/core@2.9.1(@tanstack/query-core@5.35.1)(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7))(zod@3.23.7)':
     dependencies:
       eventemitter3: 5.0.1
-      mipd: 0.0.5(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6)
-      viem: 2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6)
+      mipd: 0.0.5(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7)
+      viem: 2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7)
       zustand: 4.4.1(@types/react@18.3.1)(react@18.3.1)
     optionalDependencies:
       '@tanstack/query-core': 5.35.1
@@ -7600,17 +7624,17 @@ snapshots:
       lit: 3.1.0
       qrcode: 1.5.3
 
-  ? '@web3modal/wagmi@4.1.11(@types/react@18.3.1)(@wagmi/connectors@4.3.3(@types/react@18.3.1)(@wagmi/core@2.9.1(@tanstack/query-core@5.35.1)(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6))(zod@3.23.6))(bufferutil@4.0.8)(react-dom@18.3.1(react@18.3.1))(react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6))(zod@3.23.6))(@wagmi/core@2.9.1(@tanstack/query-core@5.35.1)(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6))(zod@3.23.6))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6))'
+  ? '@web3modal/wagmi@4.1.11(@types/react@18.3.1)(@wagmi/connectors@4.3.3(@types/react@18.3.1)(@wagmi/core@2.9.1(@tanstack/query-core@5.35.1)(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7))(zod@3.23.7))(bufferutil@4.0.8)(react-dom@18.3.1(react@18.3.1))(react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7))(zod@3.23.7))(@wagmi/core@2.9.1(@tanstack/query-core@5.35.1)(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7))(zod@3.23.7))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7))'
   : dependencies:
-      '@wagmi/connectors': 4.3.3(@types/react@18.3.1)(@wagmi/core@2.9.1(@tanstack/query-core@5.35.1)(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6))(zod@3.23.6))(bufferutil@4.0.8)(react-dom@18.3.1(react@18.3.1))(react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6))(zod@3.23.6)
-      '@wagmi/core': 2.9.1(@tanstack/query-core@5.35.1)(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6))(zod@3.23.6)
+      '@wagmi/connectors': 4.3.3(@types/react@18.3.1)(@wagmi/core@2.9.1(@tanstack/query-core@5.35.1)(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7))(zod@3.23.7))(bufferutil@4.0.8)(react-dom@18.3.1(react@18.3.1))(react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7))(zod@3.23.7)
+      '@wagmi/core': 2.9.1(@tanstack/query-core@5.35.1)(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7))(zod@3.23.7)
       '@web3modal/polyfills': 4.1.11
       '@web3modal/scaffold': 4.1.11(@types/react@18.3.1)(react@18.3.1)
       '@web3modal/scaffold-react': 4.1.11(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@web3modal/scaffold-utils': 4.1.11(@types/react@18.3.1)(react@18.3.1)
       '@web3modal/scaffold-vue': 4.1.11(@types/react@18.3.1)(react@18.3.1)
       '@web3modal/siwe': 4.1.11(@types/react@18.3.1)(react@18.3.1)
-      viem: 2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6)
+      viem: 2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7)
     optionalDependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
@@ -7622,20 +7646,20 @@ snapshots:
       '@web3modal/polyfills': 4.1.11
       zod: 3.22.4
 
-  abitype@0.9.10(typescript@5.4.5)(zod@3.23.6):
+  abitype@0.9.10(typescript@5.4.5)(zod@3.23.7):
     optionalDependencies:
       typescript: 5.4.5
-      zod: 3.23.6
+      zod: 3.23.7
 
-  abitype@0.9.8(typescript@5.4.5)(zod@3.23.6):
+  abitype@0.9.8(typescript@5.4.5)(zod@3.23.7):
     optionalDependencies:
       typescript: 5.4.5
-      zod: 3.23.6
+      zod: 3.23.7
 
-  abitype@1.0.0(typescript@5.4.5)(zod@3.23.6):
+  abitype@1.0.0(typescript@5.4.5)(zod@3.23.7):
     optionalDependencies:
       typescript: 5.4.5
-      zod: 3.23.6
+      zod: 3.23.7
 
   abort-controller@3.0.0:
     dependencies:
@@ -9819,9 +9843,9 @@ snapshots:
 
   minipass@7.1.0: {}
 
-  mipd@0.0.5(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6):
+  mipd@0.0.5(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7):
     dependencies:
-      viem: 1.21.4(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6)
+      viem: 1.21.4(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7)
     optionalDependencies:
       typescript: 5.4.5
     transitivePeerDependencies:
@@ -10350,6 +10374,10 @@ snapshots:
       loose-envify: 1.4.0
       react: 18.3.1
       scheduler: 0.23.2
+
+  react-hook-form@7.51.4(react@18.3.1):
+    dependencies:
+      react: 18.3.1
 
   react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1):
     dependencies:
@@ -11149,14 +11177,14 @@ snapshots:
 
   vary@1.1.2: {}
 
-  viem@1.21.4(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6):
+  viem@1.21.4(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7):
     dependencies:
       '@adraffy/ens-normalize': 1.10.0
       '@noble/curves': 1.2.0
       '@noble/hashes': 1.3.2
       '@scure/bip32': 1.3.2
       '@scure/bip39': 1.2.1
-      abitype: 0.9.8(typescript@5.4.5)(zod@3.23.6)
+      abitype: 0.9.8(typescript@5.4.5)(zod@3.23.7)
       isows: 1.0.3(ws@8.13.0(bufferutil@4.0.8))
       ws: 8.13.0(bufferutil@4.0.8)
     optionalDependencies:
@@ -11166,14 +11194,14 @@ snapshots:
       - utf-8-validate
       - zod
 
-  viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6):
+  viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7):
     dependencies:
       '@adraffy/ens-normalize': 1.10.0
       '@noble/curves': 1.2.0
       '@noble/hashes': 1.3.2
       '@scure/bip32': 1.3.2
       '@scure/bip39': 1.2.1
-      abitype: 1.0.0(typescript@5.4.5)(zod@3.23.6)
+      abitype: 1.0.0(typescript@5.4.5)(zod@3.23.7)
       isows: 1.0.3(ws@8.13.0(bufferutil@4.0.8))
       ws: 8.13.0(bufferutil@4.0.8)
     optionalDependencies:
@@ -11187,14 +11215,14 @@ snapshots:
 
   void-elements@3.1.0: {}
 
-  wagmi@2.8.1(@tanstack/query-core@5.35.1)(@tanstack/react-query@5.35.1(react@18.3.1))(@types/react@18.3.1)(bufferutil@4.0.8)(react-dom@18.3.1(react@18.3.1))(react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6))(zod@3.23.6):
+  wagmi@2.8.1(@tanstack/query-core@5.35.1)(@tanstack/react-query@5.35.1(react@18.3.1))(@types/react@18.3.1)(bufferutil@4.0.8)(react-dom@18.3.1(react@18.3.1))(react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7))(zod@3.23.7):
     dependencies:
       '@tanstack/react-query': 5.35.1(react@18.3.1)
-      '@wagmi/connectors': 4.3.3(@types/react@18.3.1)(@wagmi/core@2.9.1(@tanstack/query-core@5.35.1)(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6))(zod@3.23.6))(bufferutil@4.0.8)(react-dom@18.3.1(react@18.3.1))(react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6))(zod@3.23.6)
-      '@wagmi/core': 2.9.1(@tanstack/query-core@5.35.1)(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6))(zod@3.23.6)
+      '@wagmi/connectors': 4.3.3(@types/react@18.3.1)(@wagmi/core@2.9.1(@tanstack/query-core@5.35.1)(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7))(zod@3.23.7))(bufferutil@4.0.8)(react-dom@18.3.1(react@18.3.1))(react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7))(zod@3.23.7)
+      '@wagmi/core': 2.9.1(@tanstack/query-core@5.35.1)(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)(typescript@5.4.5)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7))(zod@3.23.7)
       react: 18.3.1
       use-sync-external-store: 1.2.0(react@18.3.1)
-      viem: 2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.6)
+      viem: 2.10.1(bufferutil@4.0.8)(typescript@5.4.5)(zod@3.23.7)
     optionalDependencies:
       typescript: 5.4.5
     transitivePeerDependencies:
@@ -11383,7 +11411,7 @@ snapshots:
 
   zod@3.22.4: {}
 
-  zod@3.23.6: {}
+  zod@3.23.7: {}
 
   zustand@4.4.1(@types/react@18.3.1)(react@18.3.1):
     dependencies:
