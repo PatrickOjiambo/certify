@@ -6,6 +6,8 @@ import { config } from "@/config";
 import { headers } from "next/headers";
 import { siteConfig } from "@/config/site-config";
 
+import "./globals.css";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
