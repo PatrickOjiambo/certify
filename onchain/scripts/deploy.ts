@@ -13,11 +13,25 @@ async function main() {
   const lock = await rawContract.send({
     from: deployer,
     gasPrice: "10000000000",
-  });
-   console.log("lock=>", lock);
+  }); 
 
-  
- 
+  lock.deploy
+
+  lock.deploy({
+    input: deployer
+  }).send({
+    from: deployer,
+    gas: "1500000",
+    gasPrice: '30000000000000'
+  })
+  .on('error', function(error){ console.log("Error => ", error) })
+  .on('transactionHash', function(transactionHash){ console.log("Transaction Hash => ", transactionHash) })
+  .on('receipt', function(receipt){
+   console.log(receipt.contractAddress) // contains the new contract address
+  })
+  .then(function(newContractInstance){
+    console.log("New Contract I guess", newContractInstance.options.address) // instance with the new contract address
+  });
 }
 
 // We recommend this pattern to be able to use async/await everywhere

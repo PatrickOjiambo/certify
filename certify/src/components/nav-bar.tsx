@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from 'next/image';
 import { ModalButton } from "./modal-button";
+import TestTransaction from "@/app/test";
 
 export default function NavBar() {
   return (
@@ -50,6 +51,7 @@ export default function NavBar() {
             <ModalButton />
           </div>
 
+          <TestTransaction />
         </div>
       </div>
     </>
