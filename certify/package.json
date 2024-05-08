@@ -13,6 +13,7 @@
     "@tanstack/react-query": "^5.35.1",
     "@web3modal/wagmi": "^4.1.11",
     "firebase": "^10.11.1",
+    "lucide-react": "^0.378.0",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
