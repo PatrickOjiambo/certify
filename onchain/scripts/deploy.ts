@@ -14,11 +14,10 @@ async function main() {
     from: deployer,
     gasPrice: "10000000000",
   });
-  //  console.log("lock=>", lock);
+   console.log("lock=>", lock);
 
-  const network = await ethers.getDefaultProvider().getNetwork();
-  console.log("Network name=", network.name);
-  console.log("Network chain id=", network.chainId);
+  
+ 
 }
 
 // We recommend this pattern to be able to use async/await everywhere
