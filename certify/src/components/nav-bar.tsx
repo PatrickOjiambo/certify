@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from 'next/image';
-import { AppBar } from "./app-bar";
+import { ModalButton } from "./modal-button";
 
 export default function NavBar() {
   return (
@@ -47,7 +47,7 @@ export default function NavBar() {
 
           {/* Right Section (AppBar) */}
           <div className="ml-4">
-            <AppBar />
+            <ModalButton />
           </div>
 
         </div>
