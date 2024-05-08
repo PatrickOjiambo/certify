@@ -16,7 +16,9 @@ import algosdk from "algosdk";
 import { toast } from "sonner";
 import { assignCertificate } from "@/server-actions/creations";
 import { universityCourses } from '@/constants/courses';
-
+import { pacificAbi } from '@/generated'
+import { useWriteContract } from 'wagmi'
+import {abi} from "@/abi.json"
 const formSchema = z.object({
     registrationNo: z.string(),
     coursename: z.string(),
@@ -38,21 +40,22 @@ function CreateStore() {
         resolver: zodResolver(formSchema)
     })
 
-    
+    //Using wagmi
+    const { 
+        data: hash, 
+        isPending,
+        writeContract 
+      } = useWriteContract()
 
     const onSubmit = async (values: Schema) => {
-        console.log("Values", values)
-        setLoading(true)
+       
         try {
-            if (!activeAddress) {
-                toast.error("please connect your wallet");
-                return;
-            }
-
-            if (fileURL === "") {
-                toast.error("please upload image");
-                return;
-            }
+           //On wagmi
+            writeContract({
+                address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+                abi: pacificAbi,
+                functionName: "mintCert",
+            })  
 
             // Create NFT
             const txn = await createNft({
