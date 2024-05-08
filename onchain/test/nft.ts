@@ -18,6 +18,8 @@ describe("NFT smart contract", function(){
   it("should return the tokenURI of the NFT", async function(){
     const [owner] = await ethers.getSigners();
     await certNFTCollection.mintCert(owner.address, "https://game.example/item-id-8u5h2m.json");
+    await certNFTCollection.mintCert(owner.address, "https://game.example/item-8u5h2m.json");
+    await certNFTCollection.mintCert(owner.address, "https://game.example/id-8u5h2m.json");
     const tokenURI = await certNFTCollection.tokenURI(0);
     expect(tokenURI).to.equal("https://game.example/item-id-8u5h2m.json");
   }
