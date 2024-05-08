@@ -56,6 +56,7 @@ const user_address = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
           })
           return result
       }
+      //TODO : Asset index should be a number add types to the create NFT function
     const onSubmit = async (values: Schema) => {
        
         try {
