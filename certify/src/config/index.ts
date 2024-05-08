@@ -9,9 +9,9 @@ export const projectId = process.env.NEXT_PUBLIC_PROJECT_ID;
 if (!projectId) throw new Error("Project ID is not defined");
 
 const metadata = {
-  name: "Web3Modal",
-  description: "Web3Modal Example",
-  url: "https://web3modal.com", // origin must match your domain & subdomain
+  name: process.env.NEXT_PUBLIC_WAGMI_METADATA_NAME ?? "Web3Modal",
+  description: process.env.NEXT_PUBLIC_WAGMI_METADATA_DESCRIPTION ?? "Web3Modal Example",
+  url: process.env.NEXT_PUBLIC_WAGMI_METADATA_URL ?? "", // origin must match your domain & subdomain
   icons: ["https://avatars.githubusercontent.com/u/37784886"],
 };
 
