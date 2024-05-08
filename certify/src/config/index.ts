@@ -1,5 +1,6 @@
 import { defaultWagmiConfig } from "@web3modal/wagmi";
 import { cookieStorage, createStorage } from "wagmi";
+import { ETH_CHAINS } from "./network";
 
 import { mainnet } from "wagmi/chains";
 
@@ -18,7 +19,7 @@ const metadata = {
 // Create wagmiConfig
 const chains = [mainnet] as const;
 export const config = defaultWagmiConfig({
-  chains,
+  chains: ETH_CHAINS,
   projectId,
   metadata,
   ssr: true,
