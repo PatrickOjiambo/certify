@@ -71,6 +71,9 @@ importers:
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.1)
+      uploadthing:
+        specifier: ^6.10.3
+        version: 6.10.3(h3@1.11.1)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.0.0(react@18.0.0))(react@18.0.0))(tailwindcss@3.4.1)
       viem:
         specifier: ^2.10.1
         version: 2.10.1(bufferutil@4.0.8)(typescript@5.0.2)(zod@3.23.7)
