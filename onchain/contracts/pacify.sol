@@ -9,7 +9,7 @@ contract Pacific is ERC721URIStorage {
     uint256 private _nextTokenId;
 
     constructor() ERC721("Pacify", "Pacific") {}
-
+    event CertMinted(uint256 tokenId);
     //This function is for minting the certificate as an NFT
     function mintCert(
         address recipient,
@@ -20,6 +20,7 @@ contract Pacific is ERC721URIStorage {
         _mint(recipient, tokenId);
         _setTokenURI(tokenId, tokenURI);
         // console.log("Token ID incoming", tokenId);
+        emit CertMinted(tokenId);
         return tokenId;
     }
 

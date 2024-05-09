@@ -50,6 +50,7 @@ export interface PacificInterface extends Interface {
       | "Approval"
       | "ApprovalForAll"
       | "BatchMetadataUpdate"
+      | "CertMinted"
       | "MetadataUpdate"
       | "Transfer"
   ): EventFragment;
@@ -212,6 +213,18 @@ export namespace BatchMetadataUpdateEvent {
   export interface OutputObject {
     _fromTokenId: bigint;
     _toTokenId: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
+}
+
+export namespace CertMintedEvent {
+  export type InputTuple = [tokenId: BigNumberish];
+  export type OutputTuple = [tokenId: bigint];
+  export interface OutputObject {
+    tokenId: bigint;
   }
   export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
   export type Filter = TypedDeferredTopicFilter<Event>;
@@ -482,6 +495,13 @@ export interface Pacific extends BaseContract {
     BatchMetadataUpdateEvent.OutputObject
   >;
   getEvent(
+    key: "CertMinted"
+  ): TypedContractEvent<
+    CertMintedEvent.InputTuple,
+    CertMintedEvent.OutputTuple,
+    CertMintedEvent.OutputObject
+  >;
+  getEvent(
     key: "MetadataUpdate"
   ): TypedContractEvent<
     MetadataUpdateEvent.InputTuple,
@@ -528,6 +548,17 @@ export interface Pacific extends BaseContract {
       BatchMetadataUpdateEvent.InputTuple,
       BatchMetadataUpdateEvent.OutputTuple,
       BatchMetadataUpdateEvent.OutputObject
+    >;
+
+    "CertMinted(uint256)": TypedContractEvent<
+      CertMintedEvent.InputTuple,
+      CertMintedEvent.OutputTuple,
+      CertMintedEvent.OutputObject
+    >;
+    CertMinted: TypedContractEvent<
+      CertMintedEvent.InputTuple,
+      CertMintedEvent.OutputTuple,
+      CertMintedEvent.OutputObject
     >;
 
     "MetadataUpdate(uint256)": TypedContractEvent<
