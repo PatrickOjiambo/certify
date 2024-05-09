@@ -22,16 +22,7 @@ export default function Home() {
           <Image src="/cert.jpg" width={300} height={200} alt="denv" />
         </div>
       </div>
-      <div className="flex flex-row items-center justify-center">
-        {/* <p className="text-center">
-          Built by{" "}
-          <Link href={"https://github.com/poseidons-navy"} legacyBehavior>
-            <strong className="cursor-pointer hover:underline">
-              poseidon&apos;s navy
-            </strong>
-          </Link>
-        </p> */}
-      </div>
+      <div className="flex flex-row items-center justify-center"></div>
 
       <div className="flex flex-row w-full items-center justify-center gap-y-2">
         <Link href="/institution">
