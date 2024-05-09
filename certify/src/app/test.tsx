@@ -17,7 +17,7 @@ export default function TestTransaction() {
             abi,
             functionName: 'mintCert',
             args: [to, tokenURI],
-          })
+          });
       }
     
     return (

@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center space-y-7">
       <div className="flex flex-col w-full items-center justify-center gap-y-3">
-        <h2 className="font-semibold text-2xl">Welcome to Pacify.</h2>
+        <h2 className="font-semibold text-2xl">Welcome to Certify.</h2>
         <p>Verify your academic certificates.</p>
       </div>
       <div className="flex flex-row items-center justify-center space-x-10">
@@ -31,14 +31,14 @@ export default function Home() {
         </div>
       </div>
       <div className="flex flex-row items-center justify-center">
-        <p className="text-center">
+        {/* <p className="text-center">
           Built by{" "}
           <Link href={"https://github.com/poseidons-navy"} legacyBehavior>
             <strong className="cursor-pointer hover:underline">
               poseidon&apos;s navy
             </strong>
           </Link>
-        </p>
+        </p> */}
       </div>
 
       <div className="flex flex-row w-full items-center justify-center gap-y-2">
