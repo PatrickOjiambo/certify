@@ -131,7 +131,7 @@ const user_address = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
   const onSubmit = async (values: Schema) => {
     try {
       //@ts-ignore
-      const asset_index = createNft();
+      createNft();
       const transaction_hash = "";
       //Update asset_index to something valid
       const data = {
@@ -263,6 +263,4 @@ const user_address = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
       </div></>
   )
               }}
-
 export default CreateStore
-
