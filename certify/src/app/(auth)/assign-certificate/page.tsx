@@ -28,67 +28,72 @@ const formSchema = z.object({
 type Schema = z.infer<typeof formSchema>;
 
 function CreateStore() {
-  const { activeAddress, signTransactions, sendTransactions } = useWallet();
-  const [fileURL, setFileURL] = useState<string>("");
-  const [loading, setLoading] = useState(false)
-  //const { toast } = useToast()
-  //const session = useSession();
-  const form = useForm<Schema>({
-    resolver: zodResolver(formSchema)
-  })
 
-  //Using wagmi
-  const {
-    data: hash,
-    isPending,
-    writeContract
-  } = useWriteContract()
-
-  //Get connected address --Destruct some hooks
-  const user_address = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
-  async function createNft() {
-    const tokenURI = 'https://gateway.pinata.cloud/ipfs/Qm"
-    const result = writeContract({
-      address: '0x5fbdb2315678afecb367f032d93f642f64180aa3',
-      abi,
-      functionName: 'mintCert',
-      args: [user_address, tokenURI],
+    const [fileURL, setFileURL] = useState<string>("");
+    const [loading, setLoading] = useState(false)
+    //const { toast } = useToast()
+    //const session = useSession();
+    const form = useForm<Schema>({
+        resolver: zodResolver(formSchema)
     })
-    return result
-  }
-  //TODO : Asset index should be a number add types to the create NFT function
-  const onSubmit = async (values: Schema) => {
 
-    try {
+    //Using wagmi
+    const { 
+        data: hash, 
+        isPending,
+        writeContract 
+      } = useWriteContract()
+
+      //Get connected address --Destruct some hooks
+const user_address = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
+      async function createNft(){
+        const tokenURI = 'https://gateway.pinata.cloud/ipfs/Qm'
+        const result = writeContract({
+            address: '0x5fbdb2315678afecb367f032d93f642f64180aa3',
+            abi,
+            functionName: 'mintCert',
+            args: [user_address, tokenURI],
+          })
+          
+          console.log(result);
+          return result
+      }
+      //TODO : Asset index should be a number add types to the create NFT function
+    const onSubmit = async (values: Schema) => {
+       
+        try {
+            
+
+            //@ts-ignore
+            const asset_index = await createNft();
+            const transaction_hash = ""
+
+            const data = {
+                course_name: values.coursename,
+                university_name: values.university_name,
+                student_reg_number: values.registrationNo,
+                certificate_serial_number: values.serial_number,
+                certificate_image_url: fileURL,
+                asset_index,
+                transaction_hash,
+            };
+            await assignCertificate(data);
+            toast.success("certificate has been issued successfully");
+            form.reset({
+                registrationNo: "",
+                coursename: "",
+                serial_number: "",
+                university_name: ""
+            });
+        }
+        catch (e) {
+            toast.error("could not assing certificate")
+        }
+        finally {
+            setLoading(false)
+        }
 
 
-      //@ts-ignore
-      const asset_index = await createNft();
-      const transaction_hash = ""
-
-      const data = {
-        course_name: values.coursename,
-        university_name: values.university_name,
-        student_reg_number: values.registrationNo,
-        certificate_serial_number: values.serial_number,
-        certificate_image_url: fileURL,
-        asset_index,
-        transaction_hash,
-      };
-      await assignCertificate(data);
-      toast.success("certificate has been issued successfully");
-      form.reset({
-        registrationNo: "",
-        coursename: "",
-        serial_number: "",
-        university_name: ""
-      });
-    }
-    catch (e) {
-      toast.error("could not assign certificate")
-    }
-    finally {
-      setLoading(false)
     }
 
   }
