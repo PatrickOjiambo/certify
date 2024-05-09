@@ -11,7 +11,7 @@ export const ModalButton = () => {
 
   console.log("Connected wallet address is =>", address);
   return (
-    <Button onClick={() => open()}>
+    <Button onClick={() => open()} variant="outline">
       {address && isConnected ? TruncateMiddle(address, 6) : "connect wallet"}
     </Button>
   );

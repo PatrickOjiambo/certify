@@ -3,18 +3,17 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { ModalButton } from "./modal-button";
-import TestTransaction from "@/app/test";
 
 export default function NavBar() {
   return (
     <>
-      <div className="w-full bg-black fixed top-0 left-0 right-0">
+      <div className="w-full py-4 shadow  bg-black fixed top-0 left-0 right-0">
         <div className="justify-between px-4 py-1 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
-          {/* Left Section (PACIFY and Logo) */}
+          {/* Left Section (CERTIFY and Logo) */}
           <div className="flex items-center">
             <Link href="/">
-              <h2 className="text-2xl text-amber-500 font-mono font-bold mr-2 ml-10">
-                CERTIFY
+              <h2 className="text-2xl text-amber-600   font-bold mr-2 ml-10">
+                Certify
               </h2>
             </Link>
             <Image
@@ -51,7 +50,6 @@ export default function NavBar() {
           <div className="ml-4">
             <ModalButton />
           </div>
-
         </div>
       </div>
     </>
