@@ -5,6 +5,7 @@ import { cookieToInitialState } from "wagmi";
 import { config } from "@/config";
 import { headers } from "next/headers";
 import { siteConfig } from "@/config/site-config";
+import NavBar from "@/components/nav-bar";
 
 import "./globals.css";
 
@@ -24,7 +25,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Web3ModalProvider initialState={initialState}>
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className}>
+          <NavBar />
+          {children}
+        </body>
       </Web3ModalProvider>
     </html>
   );
