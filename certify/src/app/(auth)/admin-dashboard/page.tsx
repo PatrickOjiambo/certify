@@ -7,10 +7,11 @@ import React, { useState } from "react";
 import DashboardTopBar from "@/components/topbar/page";
 import {toast} from "sonner";
 import CertificateDetails from "@/components/certificate-details";
+import { Certificate } from "@/types/certificate";
 
 
 function AdminPage() {
-  const [certificate, setCertificate] = useState<Record<string, any>>();
+  const [certificate, setCertificate] = useState<Certificate>();
   const [searchLoading, setSearchLoading] = useState(false);
   const [search, setSearch] = useState<string>("");
 
