@@ -317,3 +317,26 @@ export async function getTxIdFromSerial(serial_no: string): Promise<string>{
     throw new Error("Error occured during retrieving reg_no", e);
   }
 }
+export async function getCertFromSerial(serial_no: string): Promise<Certificate>{
+  try {
+    const assetIndexQuery = query(
+      collection(db, "certificate"),
+      where("certificate_serial_number", "==", serial_no)
+    );
+    const assetSnapshot = await getDocs(assetIndexQuery);
+    const assetData = assetSnapshot.docs.map((doc) => doc.data());
+    if (assetData.length === 0) {
+      throw new Error("No data found");
+    }
+    console.log(assetData);
+    return new Certificate(
+      assetData[0].course_name,
+      assetData[0].university_name,
+      assetData[0].student_reg_number,
+      assetData[0].certificate_serial_number,
+      assetData[0].certificate_image_url
+    );
+  } catch (e: any) {
+    throw new Error("Error occured during retrieving reg_no", e);
+  }
+}
