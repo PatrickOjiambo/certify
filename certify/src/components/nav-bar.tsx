@@ -52,7 +52,7 @@ export default function NavBar() {
             <ModalButton />
           </div>
 
-          <TestTransaction />
+         
         </div>
       </div>
     </>

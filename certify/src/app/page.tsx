@@ -1,6 +1,6 @@
 import NavBar from "@/components/nav-bar";
 import TestTransaction from "./test";
-
+import CreateStore from "./test2";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col">
@@ -8,6 +8,7 @@ export default function Home() {
         <NavBar />
         <p>Hello</p>
         <TestTransaction />
+        <CreateStore />
       </div>
     </main>
   );
