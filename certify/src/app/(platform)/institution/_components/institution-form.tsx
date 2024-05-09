@@ -16,9 +16,9 @@ import {
 import { createTeachingInstitution } from "@/server-actions/creations";
 import { createInstitutionSchema } from "@/validation/institution";
 import { UploadButton } from "@/components/uploadthing/uploadthing";
-import { useFormStatus } from "react-dom";
 import React, { useState } from "react";
-import { createNft } from "../../../../../nft/create_certificate";
+import { createNft } from "../../../../nft_actions/create_nft";
+import { useAccount } from "wagmi";
 const CreateInstitutionForm = () => {
   const form = useForm<z.infer<typeof createInstitutionSchema>>({
     resolver: zodResolver(createInstitutionSchema),
@@ -27,12 +27,11 @@ const CreateInstitutionForm = () => {
       walletAddress: "",
     },
   });
-  const { activeAddress, signTransactions, sendTransactions } = useWallet();
-  const { pending } = useFormStatus();
+  const { address, isConnected } = useAccount();
   const [fileURL, setFileURL] = useState<string>("");
   const onSubmit = async (values: z.infer<typeof createInstitutionSchema>) => {
     try {
-      if (!activeAddress) {
+      if (!address || !isConnected) {
         toast.error("please connect your wallet");
         return;
       }
@@ -44,11 +43,10 @@ const CreateInstitutionForm = () => {
 
       // Create NFT
       const txn = await createNft({
-        creator_address: activeAddress,
+        creator_address: address,
         name: values.name,
         asset_url: fileURL,
       });
-      
 
       //@ts-ignore
       const asset_index = result["asset-index"] ?? 1;
@@ -56,7 +54,7 @@ const CreateInstitutionForm = () => {
 
       const data = {
         name: values.name,
-        walletAddress: activeAddress,
+        walletAddress: address,
         asset_index,
         transaction_hash,
       };
@@ -103,7 +101,7 @@ const CreateInstitutionForm = () => {
             }}
           />
           <div className="flex  items-center">
-            <Button type="submit" className=" my-2" disabled={pending}>
+            <Button type="submit" className=" my-2">
               Create
             </Button>
           </div>
