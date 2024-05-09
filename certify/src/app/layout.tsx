@@ -8,6 +8,7 @@ import { siteConfig } from "@/config/site-config";
 import NavBar from "@/components/nav-bar";
 
 import "./globals.css";
+import { UserProvider } from "@/context/user-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,10 +26,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Web3ModalProvider initialState={initialState}>
-        <body className={inter.className}>
-          <NavBar />
-          {children}
-        </body>
+        <UserProvider>
+          <body className={inter.className}>
+            <NavBar />
+            {children}
+          </body>
+        </UserProvider>
       </Web3ModalProvider>
     </html>
   );
