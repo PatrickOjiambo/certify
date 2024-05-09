@@ -52,7 +52,6 @@ export default function NavBar() {
             <ModalButton />
           </div>
 
-         
         </div>
       </div>
     </>
