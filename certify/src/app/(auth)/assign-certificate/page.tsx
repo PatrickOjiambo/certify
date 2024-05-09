@@ -46,86 +46,22 @@ function CreateStore() {
     resolver: zodResolver(formSchema),
   });
 
-    //Using wagmi
-    const { 
-        data: hash, 
-        isPending,
-        writeContract 
-      } = useWriteContract()
+  //Using wagmi
+  const { data: hash, isPending, writeContract } = useWriteContract();
 
-      //Get connected address --Destruct some hooks
-const user_address = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
-      function createNft(){
-        const tokenURI = 'https://gateway.pinata.cloud/ipfs/Qm'
-        const result = writeContract({
-            address: '0x5fbdb2315678afecb367f032d93f642f64180aa3',
-            abi,
-            functionName: 'mintCert',
-            args: [user_address, tokenURI],
-          })
-          
-          console.log(result);
-          // return result
-      }
-      //TODO : Asset index should be a number add types to the create NFT function
-    const onSubmit = async (values: Schema) => {
-       
-        try {
-            //@ts-ignore
-            createNft();
-            const transaction_hash = ""
-
-            console.log("Form values => ", values);
-            const data = {
-                course_name: values.coursename,
-                university_name: values.university_name,
-                student_reg_number: values.registrationNo,
-                certificate_serial_number: values.serial_number,
-                certificate_image_url: fileURL,
-                asset_index: 1,
-                transaction_hash,
-            };
-            await assignCertificate(data);
-            toast.success("certificate has been issued successfully");
-            form.reset({
-                registrationNo: "",
-                coursename: "",
-                serial_number: "",
-                university_name: ""
-            });
-        }
-        catch (e) {
-            toast.error("could not assing certificate")
-        }
-        finally {
-            setLoading(false)
-        }
-
-  const { isLoading: isConfirming, isSuccess: isConfirmed } =
-    useWaitForTransactionReceipt({
-      hash,
-    });
- 
   //Get connected address --Destruct some hooks
   const user_address = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
   function createNft() {
     const tokenURI = "https://gateway.pinata.cloud/ipfs/Qm";
-    writeContract({
+    const result = writeContract({
       address: "0x5fbdb2315678afecb367f032d93f642f64180aa3",
       abi,
       functionName: "mintCert",
       args: [user_address, tokenURI],
     });
-    console.log("isconfirming", isConfirming);
-    console.log("isconfirmed", isConfirmed);
-    while (isConfirming){
-        console.log("confirming")
-    }
-    if (isConfirmed){
-        console.log("confirmed")
-    }
-    console.log("hash", hash);
-    return 1;
+
+    console.log(result);
+    // return result
   }
   //TODO : Asset index should be a number add types to the create NFT function
   const onSubmit = async (values: Schema) => {
@@ -133,7 +69,8 @@ const user_address = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
       //@ts-ignore
       createNft();
       const transaction_hash = "";
-      //Update asset_index to something valid
+
+      console.log("Form values => ", values);
       const data = {
         course_name: values.coursename,
         university_name: values.university_name,
@@ -152,115 +89,166 @@ const user_address = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
         university_name: "",
       });
     } catch (e) {
-      toast.error("could not assign certificate");
+      toast.error("could not assing certificate");
     } finally {
       setLoading(false);
     }
+
+    /*const { isLoading: isConfirming, isSuccess: isConfirmed } =
+    useWaitForTransactionReceipt({
+      hash,
+    });*/
+
+    //Get connected address --Destruct some hooks
+    const user_address = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
+    function createNft() {
+      const tokenURI = "https://gateway.pinata.cloud/ipfs/Qm";
+      writeContract({
+        address: "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+        abi,
+        functionName: "mintCert",
+        args: [user_address, tokenURI],
+      });
+      console.log("hash", hash);
+      return 1;
+    }
+    //TODO : Asset index should be a number add types to the create NFT function
+    const onSubmit = async (values: Schema) => {
+      try {
+        //@ts-ignore
+        createNft();
+        const transaction_hash = "";
+        //Update asset_index to something valid
+        const data = {
+          course_name: values.coursename,
+          university_name: values.university_name,
+          student_reg_number: values.registrationNo,
+          certificate_serial_number: values.serial_number,
+          certificate_image_url: fileURL,
+          asset_index: 1,
+          transaction_hash,
+        };
+        await assignCertificate(data);
+        toast.success("certificate has been issued successfully");
+        form.reset({
+          registrationNo: "",
+          coursename: "",
+          serial_number: "",
+          university_name: "",
+        });
+      } catch (e) {
+        toast.error("could not assign certificate");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    return (
+      <>
+        <DashboardTopBar />
+        <div className="flex flex-col w-full h-full items-center  justify-center ">
+          <div className="flex flex-row items-center justify-start w-full"></div>
+          <div className="flex flex-col w-4/5  h-full items-center justify-center px-5 ">
+            <h3 className="text-xl font-semibold ">Assign Certificate</h3>
+            <Form {...form}>
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="w-full h-full space-y-4"
+              >
+                {/* university name */}
+                <FormField
+                  control={form.control}
+                  name="university_name"
+                  render={({ field }) => {
+                    return (
+                      <FormItem>
+                        <FormLabel>University Name</FormLabel>
+                        <FormControl>
+                          <Input
+                            {...field}
+                            placeholder="University Name"
+                            type=" string"
+                          />
+                        </FormControl>
+
+                        <FormMessage />
+                      </FormItem>
+                    );
+                  }}
+                />
+
+                {/* Course Name */}
+                <FormField
+                  control={form.control}
+                  name="coursename"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Course Name</FormLabel>
+                      <Select onValueChange={field.onChange}>
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a course" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {universityCourses.map((course, index) => (
+                            <SelectItem key={index} value={course}>
+                              {course}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {/* Serial number */}
+                <FormField
+                  control={form.control}
+                  name="serial_number"
+                  render={({ field }) => {
+                    return (
+                      <FormItem>
+                        <FormLabel>Certificate&apos;s Serial Number</FormLabel>
+                        <FormControl>
+                          <Input
+                            {...field}
+                            placeholder="Serial Number"
+                            type=" number"
+                          />
+                        </FormControl>
+
+                        <FormMessage />
+                      </FormItem>
+                    );
+                  }}
+                />
+
+                <p>Image:</p>
+                <UploadButton
+                  className="ut-button:bg-primary"
+                  endpoint="imageUploader"
+                  onClientUploadComplete={(res) => {
+                    setFileURL(res[0].url);
+                    toast.success("file uploaded");
+                  }}
+                  onUploadError={(error: Error) => {
+                    toast.error(error.message);
+                  }}
+                />
+
+                <FormControl>
+                  <Button type="submit" className=" my-2">
+                    Create
+                  </Button>
+                </FormControl>
+              </form>
+            </Form>
+          </div>
+        </div>
+      </>
+    );
   };
-
-
-  return (
-    <>
-      <DashboardTopBar />
-      <div className="flex flex-col w-full h-full items-center  justify-center ">
-        <div className="flex flex-row items-center justify-start w-full">
-        </div>
-        <div className="flex flex-col w-4/5  h-full items-center justify-center px-5 ">
-          <h3 className='text-xl font-semibold ' >
-            Assign Certificate
-          </h3>
-          <Form {...form} >
-            <form onSubmit={form.handleSubmit(onSubmit)} className='w-full h-full space-y-4' >
-              {/* university name */}
-              <FormField
-                control={form.control}
-                name='university_name'
-                render={({ field }) => {
-                  return (
-                    <FormItem>
-                      <FormLabel>
-                        University Name
-                      </FormLabel>
-                      <FormControl>
-                        <Input {...field} placeholder='University Name' type=" string" />
-                      </FormControl>
-
-                      <FormMessage />
-                    </FormItem>
-                  );
-                }}
-              />
-
-              {/* Course Name */}
-              <FormField
-                control={form.control}
-                name="coursename"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Course Name</FormLabel>
-                    <Select onValueChange={field.onChange}>
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select a course" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        {universityCourses.map((course, index) => (
-                          <SelectItem key={index} value={course}>
-                            {course}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              {/* Serial number */}
-              <FormField
-                control={form.control}
-                name="serial_number"
-                render={({ field }) => {
-                  return (
-                    <FormItem>
-                      <FormLabel>Certificate&apos;s Serial Number</FormLabel>
-                      <FormControl>
-                        <Input
-                          {...field}
-                          placeholder="Serial Number"
-                          type=" number"
-                        />
-                      </FormControl>
-
-                      <FormMessage />
-                    </FormItem>
-                  );
-                }}
-              />
-
-              <p>Image:</p>
-              <UploadButton
-                className="ut-button:bg-primary"
-                endpoint="imageUploader"
-                onClientUploadComplete={(res) => {
-                  setFileURL(res[0].url);
-                  toast.success("file uploaded");
-                }}
-                onUploadError={(error: Error) => {
-                  toast.error(error.message);
-                }}
-              />
-
-              <FormControl    >
-                <Button type="submit" className=" my-2">
-                  Create
-                </Button>
-              </FormControl>
-            </form>
-          </Form>
-        </div>
-      </div></>
-  )
-              }}
-export default CreateStore
+}
+export default CreateStore;
