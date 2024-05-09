@@ -28,7 +28,6 @@ const formSchema = z.object({
 type Schema = z.infer<typeof formSchema>;
 
 function CreateStore() {
-    const { activeAddress, signTransactions, sendTransactions } = useWallet();
     const [fileURL, setFileURL] = useState<string>("");
     const [loading, setLoading] = useState(false)
     //const { toast } = useToast()
@@ -47,13 +46,15 @@ function CreateStore() {
       //Get connected address --Destruct some hooks
 const user_address = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
       async function createNft(){
-        const tokenURI = 'https://gateway.pinata.cloud/ipfs/Qm"
+        const tokenURI = 'https://gateway.pinata.cloud/ipfs/Qm'
         const result = writeContract({
             address: '0x5fbdb2315678afecb367f032d93f642f64180aa3',
             abi,
             functionName: 'mintCert',
             args: [user_address, tokenURI],
           })
+          
+          console.log(result);
           return result
       }
       //TODO : Asset index should be a number add types to the create NFT function

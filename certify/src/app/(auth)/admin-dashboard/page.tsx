@@ -5,7 +5,6 @@ import { PlusIcon, Search } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 import DashboardTopBar from "@/components/topbar/page";
-import { getCertificate } from "../../../../nft/get_certificate";
 import {toast} from "sonner";
 import CertificateDetails from "@/components/certificate-details";
 
@@ -26,7 +25,7 @@ function AdminPage() {
 
   const loadStoreData = async (serial_number: string) => {
     try {
-      const certificate = await getCertificate(serial_number);
+      // const certificate = await getCertificate(serial_number);
       console.log(certificate);
 
       setCertificate(certificate);
