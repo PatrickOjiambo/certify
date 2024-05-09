@@ -1,41 +1,50 @@
-
-"use client"
-import { Button } from '@/components/ui/button'
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from '@/components/ui/select'
-import { zodResolver } from '@hookform/resolvers/zod'
-import React, { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-import DashboardTopBar from '@/components/topbar/page'
+"use client";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+  SelectValue,
+} from "@/components/ui/select";
+import { zodResolver } from "@hookform/resolvers/zod";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import DashboardTopBar from "@/components/topbar/page";
 import { UploadButton } from "@/components/uploadthing/uploadthing";
 import { toast } from "sonner";
 import { assignCertificate } from "@/server-actions/creations";
-import { universityCourses } from '@/constants/courses';
-import { pacificAbi } from '@/generated'
-import { useWriteContract } from 'wagmi'
-import { abi } from "@/abi.json"
+import { universityCourses } from "@/constants/courses";
+import { pacificAbi } from "@/generated";
+import { useWriteContract, useWaitForTransactionReceipt } from "wagmi";
+import { abi } from "@/abi.json";
 const formSchema = z.object({
   registrationNo: z.string(),
   coursename: z.string(),
   serial_number: z.string(),
-  university_name: z.string()
-})
-
-
+  university_name: z.string(),
+});
 
 type Schema = z.infer<typeof formSchema>;
 
 function CreateStore() {
-
-    const [fileURL, setFileURL] = useState<string>("");
-    const [loading, setLoading] = useState(false)
-    //const { toast } = useToast()
-    //const session = useSession();
-    const form = useForm<Schema>({
-        resolver: zodResolver(formSchema)
-    })
+  const [fileURL, setFileURL] = useState<string>("");
+  const [loading, setLoading] = useState(false);
+  //const { toast } = useToast()
+  //const session = useSession();
+  const form = useForm<Schema>({
+    resolver: zodResolver(formSchema),
+  });
 
     //Using wagmi
     const { 
@@ -92,10 +101,62 @@ const user_address = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
             setLoading(false)
         }
 
-
+  const { isLoading: isConfirming, isSuccess: isConfirmed } =
+    useWaitForTransactionReceipt({
+      hash,
+    });
+ 
+  //Get connected address --Destruct some hooks
+  const user_address = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
+  function createNft() {
+    const tokenURI = "https://gateway.pinata.cloud/ipfs/Qm";
+    writeContract({
+      address: "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+      abi,
+      functionName: "mintCert",
+      args: [user_address, tokenURI],
+    });
+    console.log("isconfirming", isConfirming);
+    console.log("isconfirmed", isConfirmed);
+    while (isConfirming){
+        console.log("confirming")
     }
-
-
+    if (isConfirmed){
+        console.log("confirmed")
+    }
+    console.log("hash", hash);
+    return 1;
+  }
+  //TODO : Asset index should be a number add types to the create NFT function
+  const onSubmit = async (values: Schema) => {
+    try {
+      //@ts-ignore
+      const asset_index = createNft();
+      const transaction_hash = "";
+      //Update asset_index to something valid
+      const data = {
+        course_name: values.coursename,
+        university_name: values.university_name,
+        student_reg_number: values.registrationNo,
+        certificate_serial_number: values.serial_number,
+        certificate_image_url: fileURL,
+        asset_index: 1,
+        transaction_hash,
+      };
+      await assignCertificate(data);
+      toast.success("certificate has been issued successfully");
+      form.reset({
+        registrationNo: "",
+        coursename: "",
+        serial_number: "",
+        university_name: "",
+      });
+    } catch (e) {
+      toast.error("could not assign certificate");
+    } finally {
+      setLoading(false);
+    }
+  };
 
 
   return (
@@ -126,31 +187,12 @@ const user_address = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
 
                       <FormMessage />
                     </FormItem>
-                  )
+                  );
                 }}
               />
 
-              {/* registration number */}
+              {/* Course Name */}
               <FormField
-                control={form.control}
-                name='registrationNo'
-                render={({ field }) => {
-                  return (
-                    <FormItem>
-                      <FormLabel>
-                        Student&apos;s Registration Number
-                      </FormLabel>
-                      <FormControl>
-                        <Input {...field} placeholder='Reg no' type=" string" />
-                      </FormControl>
-
-                      <FormMessage />
-                    </FormItem>
-                  )
-                }}
-              />
-
-              {/* Course Name */}<FormField
                 control={form.control}
                 name="coursename"
                 render={({ field }) => (
@@ -175,29 +217,27 @@ const user_address = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
                 )}
               />
 
-
-
               {/* Serial number */}
               <FormField
                 control={form.control}
-                name='serial_number'
+                name="serial_number"
                 render={({ field }) => {
                   return (
                     <FormItem>
-                      <FormLabel>
-                        Certificate&apos;s Serial Number
-                      </FormLabel>
+                      <FormLabel>Certificate&apos;s Serial Number</FormLabel>
                       <FormControl>
-                        <Input {...field} placeholder='Serial Number' type=" number" />
+                        <Input
+                          {...field}
+                          placeholder="Serial Number"
+                          type=" number"
+                        />
                       </FormControl>
 
                       <FormMessage />
                     </FormItem>
-                  )
+                  );
                 }}
               />
-
-
 
               <p>Image:</p>
               <UploadButton
@@ -222,5 +262,5 @@ const user_address = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
         </div>
       </div></>
   )
-              }
-export default CreateStore;
+              }}
+export default CreateStore
