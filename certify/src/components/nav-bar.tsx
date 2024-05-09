@@ -7,7 +7,7 @@ import { ModalButton } from "./modal-button";
 export default function NavBar() {
   return (
     <>
-      <div className="w-full py-4 shadow  bg-black fixed top-0 left-0 right-0">
+      <div className="w-full py-2 shadow  bg-black fixed top-0 left-0 right-0">
         <div className="justify-between px-4 py-1 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
           {/* Left Section (CERTIFY and Logo) */}
           <div className="flex items-center">
