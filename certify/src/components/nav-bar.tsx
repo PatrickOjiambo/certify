@@ -51,8 +51,6 @@ export default function NavBar() {
           <div className="ml-4">
             <ModalButton />
           </div>
-
-          <TestTransaction />
         </div>
       </div>
     </>
