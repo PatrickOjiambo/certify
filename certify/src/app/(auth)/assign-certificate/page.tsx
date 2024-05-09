@@ -46,7 +46,7 @@ function CreateStore() {
 
       //Get connected address --Destruct some hooks
 const user_address = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
-      async function createNft(){
+      function createNft(){
         const tokenURI = 'https://gateway.pinata.cloud/ipfs/Qm'
         const result = writeContract({
             address: '0x5fbdb2315678afecb367f032d93f642f64180aa3',
@@ -56,25 +56,24 @@ const user_address = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
           })
           
           console.log(result);
-          return result
+          // return result
       }
       //TODO : Asset index should be a number add types to the create NFT function
     const onSubmit = async (values: Schema) => {
        
         try {
-            
-
             //@ts-ignore
-            const asset_index = await createNft();
+            createNft();
             const transaction_hash = ""
 
+            console.log("Form values => ", values);
             const data = {
                 course_name: values.coursename,
                 university_name: values.university_name,
                 student_reg_number: values.registrationNo,
                 certificate_serial_number: values.serial_number,
                 certificate_image_url: fileURL,
-                asset_index,
+                asset_index: 1,
                 transaction_hash,
             };
             await assignCertificate(data);
@@ -96,7 +95,7 @@ const user_address = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
 
     }
 
-  }
+
 
 
   return (
@@ -223,7 +222,5 @@ const user_address = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
         </div>
       </div></>
   )
-
-}
-
+              }
 export default CreateStore;
