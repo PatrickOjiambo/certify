@@ -23,16 +23,15 @@ import {
 } from "@/components/ui/form";
 import { createStudentAccount } from "@/server-actions/creations";
 import { createStudentSchema } from "@/validation/students";
-import axios from 'axios';
 import React, { useState } from "react";
-import { pacificAbi } from '@/generated'
-import { useWriteContract } from 'wagmi'
-import {abi} from "@/abi.json"
+import { pacificAbi } from "@/generated";
+import { useAccount, useWriteContract } from "wagmi";
+import { abi } from "@/abi.json";
 import { UploadButton } from "@/components/uploadthing/uploadthing";
 import { universityCourses } from "@/constants/courses";
 
 const StudentSignUpForm = () => {
-  const { activeAddress, signTransactions, sendTransactions } = useWallet();
+  const { address } = useAccount();
 
   const [fileURL, setFileURL] = useState<string>("");
 
@@ -48,28 +47,24 @@ const StudentSignUpForm = () => {
   });
 
   //Creating the NFT
- //Using wagmi
- const { 
-  data: hash, 
-  isPending,
-  writeContract 
-} = useWriteContract()
+  //Using wagmi
+  const { data: hash, isPending, writeContract } = useWriteContract();
 
-//Get connected address --Destruct some hooks
-const user_address = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
-async function createNft(){
-  const tokenURI = 'https://gateway.pinata.cloud/ipfs/Qm"
-  const result = writeContract({
-      address: '0x5fbdb2315678afecb367f032d93f642f64180aa3',
+  //Get connected address --Destruct some hooks
+  const user_address = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
+  async function createNft() {
+    const tokenURI = "https://gateway.pinata.cloud/ipfs/Qm";
+    const result = writeContract({
+      address: "0x5fbdb2315678afecb367f032d93f642f64180aa3",
       abi,
-      functionName: 'mintCert',
+      functionName: "mintCert",
       args: [user_address, tokenURI],
-    })
-    return result
-}
+    });
+    return result;
+  }
   const onSubmit = async (values: z.infer<typeof createStudentSchema>) => {
     try {
-      if (!activeAddress) {
+      if (!address) {
         toast.error("please connect your wallet");
         return;
       }
@@ -79,10 +74,9 @@ async function createNft(){
         return;
       }
 
-
       //@ts-ignore
       const asset_index = await createNft();
-      const transaction_hash = ""
+      const transaction_hash = "";
 
       let data = {
         email: values.email,
@@ -93,7 +87,7 @@ async function createNft(){
         asset_index,
         transaction_hash,
       };
-
+      //@ts-ignore
       await createStudentAccount(data);
 
       toast.success("Student account has been created successfully");

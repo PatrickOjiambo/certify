@@ -93,7 +93,6 @@ function CreateStore() {
     } finally {
       setLoading(false);
     }
-
    
   }
   return (
@@ -172,8 +171,6 @@ function CreateStore() {
       </FormItem>
     )}
   />
-
-
 
                     {/* Serial number */}
                     <FormField
