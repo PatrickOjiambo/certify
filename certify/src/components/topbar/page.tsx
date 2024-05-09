@@ -24,7 +24,7 @@ function DashboardTopBar() {
       <BackButton />
       <div className="ml-16 flex flex-row items-center justify-start w-full space-x-2">
         <span className="text-xl decoration-4 font-bold font-mono">
-          <p>Welcome to Pacify</p>
+          <p>Welcome to Certify</p>
         </span>
       </div>
 
