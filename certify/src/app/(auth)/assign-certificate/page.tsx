@@ -7,12 +7,9 @@ import { Select, SelectTrigger, SelectContent, SelectItem ,SelectValue} from '@/
 import { zodResolver } from '@hookform/resolvers/zod'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { createNft } from "../../../../nft/create_certificate";
 import { z } from 'zod'
 import DashboardTopBar from '@/components/topbar/page'
-import { useWallet } from "@txnlab/use-wallet";
 import { UploadButton } from "@/components/uploadthing/uploadthing";
-import algosdk from "algosdk";
 import { toast } from "sonner";
 import { assignCertificate } from "@/server-actions/creations";
 import { universityCourses } from '@/constants/courses';
@@ -47,30 +44,27 @@ function CreateStore() {
         writeContract 
       } = useWriteContract()
 
+      //Get connected address --Destruct some hooks
+const user_address = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
+      async function createNft(){
+        const tokenURI = 'https://gateway.pinata.cloud/ipfs/Qm"
+        const result = writeContract({
+            address: '0x5fbdb2315678afecb367f032d93f642f64180aa3',
+            abi,
+            functionName: 'mintCert',
+            args: [user_address, tokenURI],
+          })
+          return result
+      }
+      //TODO : Asset index should be a number add types to the create NFT function
     const onSubmit = async (values: Schema) => {
        
         try {
-           //On wagmi
-            writeContract({
-                address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
-                abi: pacificAbi,
-                functionName: "mintCert",
-            })  
-
-            // Create NFT
-            const txn = await createNft({
-                creator_address: activeAddress,
-                name: values.serial_number,
-                asset_url: fileURL,
-            });
-            const encodedTransaction = algosdk.encodeUnsignedTransaction(txn);
-            const signedTxn = await signTransactions([encodedTransaction]);
-            const waitRoundsToConfirm = 4;
-            const result = await sendTransactions(signedTxn, waitRoundsToConfirm);
+            
 
             //@ts-ignore
-            const asset_index = result["asset-index"] ?? 1;
-            const transaction_hash = result.txId;
+            const asset_index = await createNft();
+            const transaction_hash = ""
 
             const data = {
                 course_name: values.coursename,
@@ -199,46 +193,7 @@ function CreateStore() {
                                 }}
                             />
 
-                            {/* certificate pdf upload
-                         <FormField
-                            control={form.control}
-                            name='certificate_url'
-                            render={({ field }) => {
-                                return (
-                                    <FormItem>
-                                        <FormLabel>
-                                            The Certificate PDF/Image <i>(file should not exceed 4MB)</i>
-                                        </FormLabel>
-                                        <FormControl>
-
-                                            <UploadDropzone
-                             endpoint='imageUploader'
-                                                onClientUploadComplete={(uploads) => {
-                                                    const upload = uploads?.at(-1)
-
-                                                    if (upload) {
-                                                        field.onChange(upload.url)
-                                                        toast({
-                                                            title: "Success!",
-                                                            description: "Successfully uploaded the file"
-                                                        })
-                                                    }
-                                                }}
-                                                onUploadError={(e) => {
-                                                    toast({
-                                                        variant: "destructive",
-                                                        title: "!Oops",
-                                                        description: "File should not exceed 4MB"
-                                                    })
-                                                }}
-
-                                            />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )
-                            }}
-                        /> */}
+                     
 
                             <p>Image:</p>
                             <UploadButton

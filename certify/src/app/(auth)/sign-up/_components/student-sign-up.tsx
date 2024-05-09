@@ -24,10 +24,10 @@ import {
 import { createStudentAccount } from "@/server-actions/creations";
 import { createStudentSchema } from "@/validation/students";
 import axios from 'axios';
-import { useWallet } from "@txnlab/use-wallet";
 import React, { useState } from "react";
-import algosdk from "algosdk";
-import { createNft } from "../../../../../nft/create_certificate";
+import { pacificAbi } from '@/generated'
+import { useWriteContract } from 'wagmi'
+import {abi} from "@/abi.json"
 import { UploadButton } from "@/components/uploadthing/uploadthing";
 import { universityCourses } from "@/constants/courses";
 
@@ -47,6 +47,26 @@ const StudentSignUpForm = () => {
     },
   });
 
+  //Creating the NFT
+ //Using wagmi
+ const { 
+  data: hash, 
+  isPending,
+  writeContract 
+} = useWriteContract()
+
+//Get connected address --Destruct some hooks
+const user_address = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
+async function createNft(){
+  const tokenURI = 'https://gateway.pinata.cloud/ipfs/Qm"
+  const result = writeContract({
+      address: '0x5fbdb2315678afecb367f032d93f642f64180aa3',
+      abi,
+      functionName: 'mintCert',
+      args: [user_address, tokenURI],
+    })
+    return result
+}
   const onSubmit = async (values: z.infer<typeof createStudentSchema>) => {
     try {
       if (!activeAddress) {
@@ -59,20 +79,10 @@ const StudentSignUpForm = () => {
         return;
       }
 
-      // Create NFT
-      const txn = await createNft({
-        creator_address: activeAddress,
-        name: values.registrationNumber,
-        asset_url: fileURL,
-      });
-      const encodedTransaction = algosdk.encodeUnsignedTransaction(txn);
-      const signedTxn = await signTransactions([encodedTransaction]);
-      const waitRoundsToConfirm = 4;
-      const result = await sendTransactions(signedTxn, waitRoundsToConfirm);
 
       //@ts-ignore
-      const asset_index = result["asset-index"] ?? 1;
-      const transaction_hash = result.txId;
+      const asset_index = await createNft();
+      const transaction_hash = ""
 
       let data = {
         email: values.email,

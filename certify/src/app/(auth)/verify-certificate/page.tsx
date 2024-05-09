@@ -1,15 +1,19 @@
 "use client";
+//functionality to retrieve the NFT from the blockchain using the Token ID. First we use serial number to fetch
+//the token Id, we then use the token ID to fetch the NFT from the blockchain
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import DashboardTopBar from "@/components/topbar/page";
 import CertificateDetails from "@/components/certificate-details";
-import { getCertificate } from "../../../../nft/get_certificate";
 import { toast } from "sonner";
-
+import { pacificAbi } from '@/generated'
+import { useWriteContract } from 'wagmi'
+import {abi} from "@/abi.json"
 import { getUserDataFromLogin } from "@/db/getions";
 import { getTxIdFromSerial } from "@/db/getions";
+import { getIndexFromDb } from "@/db/getions";
 
 function VerifyCertificate() {
   const [certificate, setCertificate] = useState<Record<string, any>>();
@@ -20,7 +24,26 @@ function VerifyCertificate() {
     universityName: string;
   }>({ serialNumber: "", universityName: "" });
 
+  const { 
+    data: hash, 
+    isPending,
+    writeContract 
+  } = useWriteContract()
+  //Core function to retrieve the NFT from the blockchain
+async function getNFT(serial_no: string){
 
+  const asset_index = await getIndexFromDb(serial_no);
+  if (asset_index === undefined || asset_index === null) {
+    throw "Certificate Does Not Exist";
+  }
+  const result = writeContract({
+      address: '0x5fbdb2315678afecb367f032d93f642f64180aa3',
+      abi,
+      functionName: 'searchCert',
+      args: [asset_index],
+    })
+    return result
+}
   const handleSearch = () => {
     setSearchLoading(true);
     if (search === undefined) {
@@ -32,7 +55,9 @@ function VerifyCertificate() {
 
   const loadStoreData = async (serial_number: string) => {
     try {
-      const certificate = await getCertificate(serial_number);
+
+
+      // const certificate = await getCertificate(serial_number);
       console.log(certificate);
 
       setCertificate(certificate);
