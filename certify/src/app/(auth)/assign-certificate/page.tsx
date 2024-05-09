@@ -146,7 +146,7 @@ function CreateStore() {
     return (
       <>
         <DashboardTopBar />
-        <div className="flex flex-col w-full h-full items-center  justify-center ">
+        <div className="flex mt-20 flex-col w-full h-full items-center  justify-center ">
           <div className="flex flex-row items-center justify-start w-full"></div>
           <div className="flex flex-col w-4/5  h-full items-center justify-center px-5 ">
             <h3 className="text-xl font-semibold ">Assign Certificate</h3>
