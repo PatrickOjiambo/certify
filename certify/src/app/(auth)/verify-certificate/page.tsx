@@ -4,6 +4,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
+import { Certificate } from "@/types/certificate";
 import React, { useEffect, useState } from "react";
 import DashboardTopBar from "@/components/topbar/page";
 import CertificateDetails from "@/components/certificate-details";
@@ -14,9 +15,9 @@ import {abi} from "@/abi.json"
 import { getUserDataFromLogin } from "@/db/getions";
 import { getTxIdFromSerial } from "@/db/getions";
 import { getIndexFromDb } from "@/db/getions";
-
+import { getCertFromSerial } from "@/db/getions";
 function VerifyCertificate() {
-  const [certificate, setCertificate] = useState<Record<string, any>>();
+  const [certificate, setCertificate] = useState<Certificate>();
   const [txid, setTxid] = useState<string>("");
   const [searchLoading, setSearchLoading] = useState(false);
   const [search, setSearch] = useState<{
@@ -56,7 +57,7 @@ async function getNFT(serial_no: string){
   const loadStoreData = async (serial_number: string) => {
     try {
 
-
+const certificate = await getCertFromSerial(serial_number);
       // const certificate = await getCertificate(serial_number);
       console.log(certificate);
 
@@ -64,13 +65,9 @@ async function getNFT(serial_no: string){
 
       
       //geting the transaction id of the cert creation
-      const txid = await getTxIdFromSerial(serial_number);
       setTxid(txid);
       //Adding the transaction id to the certificate object
-      setCertificate(prevState => ({
-        ...prevState,
-        tx_hash: txid,
-      }));
+      setCertificate(certificate);
 
       setSearch({ serialNumber: "", universityName: "" });
 

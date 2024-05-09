@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 "use client";
 import { Button } from "@/components/ui/button";
 import {
@@ -29,44 +28,16 @@ import { universityCourses } from "@/constants/courses";
 import { pacificAbi } from "@/generated";
 import { useWriteContract, useWaitForTransactionReceipt } from "wagmi";
 import { abi } from "@/abi.json";
-=======
-
-"use client"
-import { Button } from '@/components/ui/button'
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from '@/components/ui/select'
-import { zodResolver } from '@hookform/resolvers/zod'
-import React, { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-import DashboardTopBar from '@/components/topbar/page'
-import { UploadButton } from "@/components/uploadthing/uploadthing";
-import { toast } from "sonner";
-import { assignCertificate } from "@/server-actions/creations";
-import { universityCourses } from '@/constants/courses';
-import { pacificAbi } from '@/generated'
-import { useWriteContract } from 'wagmi'
-import { abi } from "@/abi.json"
->>>>>>> 5957d3fc5c70ecf7f1961bd5d4fe4facdf584084
 const formSchema = z.object({
   registrationNo: z.string(),
   coursename: z.string(),
   serial_number: z.string(),
-<<<<<<< HEAD
   university_name: z.string(),
 });
-=======
-  university_name: z.string()
-})
-
-
->>>>>>> 5957d3fc5c70ecf7f1961bd5d4fe4facdf584084
 
 type Schema = z.infer<typeof formSchema>;
 
 function CreateStore() {
-<<<<<<< HEAD
   const [fileURL, setFileURL] = useState<string>("");
   const [loading, setLoading] = useState(false);
   //const { toast } = useToast()
@@ -74,21 +45,62 @@ function CreateStore() {
   const form = useForm<Schema>({
     resolver: zodResolver(formSchema),
   });
-=======
 
-    const [fileURL, setFileURL] = useState<string>("");
-    const [loading, setLoading] = useState(false)
-    //const { toast } = useToast()
-    //const session = useSession();
-    const form = useForm<Schema>({
-        resolver: zodResolver(formSchema)
-    })
->>>>>>> 5957d3fc5c70ecf7f1961bd5d4fe4facdf584084
+    //Using wagmi
+    const { 
+        data: hash, 
+        isPending,
+        writeContract 
+      } = useWriteContract()
 
-  //Using wagmi
-  const { data: hash, isPending, writeContract } = useWriteContract();
+      //Get connected address --Destruct some hooks
+const user_address = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
+      function createNft(){
+        const tokenURI = 'https://gateway.pinata.cloud/ipfs/Qm'
+        const result = writeContract({
+            address: '0x5fbdb2315678afecb367f032d93f642f64180aa3',
+            abi,
+            functionName: 'mintCert',
+            args: [user_address, tokenURI],
+          })
+          
+          console.log(result);
+          // return result
+      }
+      //TODO : Asset index should be a number add types to the create NFT function
+    const onSubmit = async (values: Schema) => {
+       
+        try {
+            //@ts-ignore
+            createNft();
+            const transaction_hash = ""
 
-<<<<<<< HEAD
+            console.log("Form values => ", values);
+            const data = {
+                course_name: values.coursename,
+                university_name: values.university_name,
+                student_reg_number: values.registrationNo,
+                certificate_serial_number: values.serial_number,
+                certificate_image_url: fileURL,
+                asset_index: 1,
+                transaction_hash,
+            };
+            await assignCertificate(data);
+            toast.success("certificate has been issued successfully");
+            form.reset({
+                registrationNo: "",
+                coursename: "",
+                serial_number: "",
+                university_name: ""
+            });
+        }
+        catch (e) {
+            toast.error("could not assing certificate")
+        }
+        finally {
+            setLoading(false)
+        }
+
   const { isLoading: isConfirming, isSuccess: isConfirmed } =
     useWaitForTransactionReceipt({
       hash,
@@ -108,9 +120,6 @@ function CreateStore() {
     console.log("isconfirmed", isConfirmed);
     while (isConfirming){
         console.log("confirming")
-=======
-
->>>>>>> 5957d3fc5c70ecf7f1961bd5d4fe4facdf584084
     }
     if (isConfirmed){
         console.log("confirmed")
@@ -149,54 +158,6 @@ function CreateStore() {
     }
   };
 
-<<<<<<< HEAD
-  return (
-    <>
-      <DashboardTopBar />
-      <div className="flex flex-col w-full h-full items-center  justify-center ">
-        <div className="flex flex-row items-center justify-start w-full"></div>
-        <div className="flex flex-col w-4/5  h-full items-center justify-center px-5 ">
-          <h3 className="text-xl font-semibold ">Assign Certificate</h3>
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="w-full h-full space-y-4"
-            >
-              {/* university name */}
-              <FormField
-                control={form.control}
-                name="university_name"
-                render={({ field }) => {
-                  return (
-                    <FormItem>
-                      <FormLabel>University Name</FormLabel>
-                      <FormControl>
-                        <Input
-                          {...field}
-                          placeholder="University Name"
-                          type=" string"
-                        />
-                      </FormControl>
-
-                      <FormMessage />
-                    </FormItem>
-                  );
-                }}
-              />
-
-              {/* registration number */}
-              <FormField
-                control={form.control}
-                name="registrationNo"
-                render={({ field }) => {
-                  return (
-                    <FormItem>
-                      <FormLabel>Student&apos;s Registration Number</FormLabel>
-                      <FormControl>
-                        <Input {...field} placeholder="Reg no" type=" string" />
-=======
-  }
-
 
   return (
     <>
@@ -222,12 +183,10 @@ function CreateStore() {
                       </FormLabel>
                       <FormControl>
                         <Input {...field} placeholder='University Name' type=" string" />
->>>>>>> 5957d3fc5c70ecf7f1961bd5d4fe4facdf584084
                       </FormControl>
 
                       <FormMessage />
                     </FormItem>
-<<<<<<< HEAD
                   );
                 }}
               />
@@ -235,34 +194,6 @@ function CreateStore() {
               {/* Course Name */}
               <FormField
                 control={form.control}
-=======
-                  )
-                }}
-              />
-
-              {/* registration number */}
-              <FormField
-                control={form.control}
-                name='registrationNo'
-                render={({ field }) => {
-                  return (
-                    <FormItem>
-                      <FormLabel>
-                        Student&apos;s Registration Number
-                      </FormLabel>
-                      <FormControl>
-                        <Input {...field} placeholder='Reg no' type=" string" />
-                      </FormControl>
-
-                      <FormMessage />
-                    </FormItem>
-                  )
-                }}
-              />
-
-              {/* Course Name */}<FormField
-                control={form.control}
->>>>>>> 5957d3fc5c70ecf7f1961bd5d4fe4facdf584084
                 name="coursename"
                 render={({ field }) => (
                   <FormItem>
@@ -308,31 +239,6 @@ function CreateStore() {
                 }}
               />
 
-<<<<<<< HEAD
-=======
-              {/* Serial number */}
-              <FormField
-                control={form.control}
-                name='serial_number'
-                render={({ field }) => {
-                  return (
-                    <FormItem>
-                      <FormLabel>
-                        Certificate&apos;s Serial Number
-                      </FormLabel>
-                      <FormControl>
-                        <Input {...field} placeholder='Serial Number' type=" number" />
-                      </FormControl>
-
-                      <FormMessage />
-                    </FormItem>
-                  )
-                }}
-              />
-
-
-
->>>>>>> 5957d3fc5c70ecf7f1961bd5d4fe4facdf584084
               <p>Image:</p>
               <UploadButton
                 className="ut-button:bg-primary"
@@ -345,8 +251,6 @@ function CreateStore() {
                   toast.error(error.message);
                 }}
               />
-<<<<<<< HEAD
-=======
 
               <FormControl    >
                 <Button type="submit" className=" my-2">
@@ -358,19 +262,5 @@ function CreateStore() {
         </div>
       </div></>
   )
->>>>>>> 5957d3fc5c70ecf7f1961bd5d4fe4facdf584084
-
-              <FormControl>
-                <Button type="submit" className=" my-2">
-                  Create
-                </Button>
-              </FormControl>
-            </form>
-          </Form>
-        </div>
-      </div>
-    </>
-  );
-}
-
-export default CreateStore;
+              }}
+export default CreateStore
