@@ -17,7 +17,8 @@ import {
 } from "@/components/ui/form";
 import { addStudentWalletToDB } from "@/server-actions/creations";
 import { connectWalletSchema } from "@/validation/students";
-import { useWallet } from "@txnlab/use-wallet";
+import { useWriteContract, useAccount } from "wagmi";
+
 const ConnectWalletForm = () => {
   const form = useForm<z.infer<typeof connectWalletSchema>>({
     resolver: zodResolver(connectWalletSchema),
@@ -25,17 +26,17 @@ const ConnectWalletForm = () => {
       registrationNumber: "",
     },
   });
-  const { activeAddress } = useWallet();
+  const { address, isConnected } = useAccount();
 
   const onSubmit = async (values: z.infer<typeof connectWalletSchema>) => {
     try {
-      if (!activeAddress) {
+      if (!address) {
         toast.error("please connect your wallet");
         return;
       }
       const data = {
         registrationNumber: values.registrationNumber,
-        walletAddress: activeAddress,
+        walletAddress: address,
       };
       await addStudentWalletToDB(data);
       toast.success(" Successfully added your wallet details");

@@ -26,7 +26,7 @@ import { toast } from "sonner";
 import { assignCertificate } from "@/server-actions/creations";
 import { universityCourses } from "@/constants/courses";
 import { pacificAbi } from "@/generated";
-import { useWriteContract, useWaitForTransactionReceipt } from "wagmi";
+import { useWriteContract } from "wagmi";
 import { abi } from "@/abi.json";
 const formSchema = z.object({
   registrationNo: z.string(),

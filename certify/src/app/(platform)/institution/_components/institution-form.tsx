@@ -17,8 +17,9 @@ import { createTeachingInstitution } from "@/server-actions/creations";
 import { createInstitutionSchema } from "@/validation/institution";
 import { UploadButton } from "@/components/uploadthing/uploadthing";
 import React, { useState } from "react";
-import { createNft } from "../../../../nft_actions/create_nft";
-import { useAccount } from "wagmi";
+import { useWriteContract, useAccount } from "wagmi";
+import { abi } from "@/abi.json";
+
 const CreateInstitutionForm = () => {
   const form = useForm<z.infer<typeof createInstitutionSchema>>({
     resolver: zodResolver(createInstitutionSchema),
@@ -27,10 +28,28 @@ const CreateInstitutionForm = () => {
       walletAddress: "",
     },
   });
+  //Using wagmi
+  const { data: hash, writeContract } = useWriteContract();
+
+  //Get connected address --Destruct some hooks
+  // const user_address = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
   const { address, isConnected } = useAccount();
   const [fileURL, setFileURL] = useState<string>("");
+  function createNft() {
+    const tokenURI = "https://gateway.pinata.cloud/ipfs/Qm";
+    const result = writeContract({
+      address: "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+      abi,
+      functionName: "mintCert",
+      args: [address, tokenURI],
+    });
+
+    console.log(result);
+    // return result
+  }
   const onSubmit = async (values: z.infer<typeof createInstitutionSchema>) => {
     try {
+      console.log("Submit");
       if (!address || !isConnected) {
         toast.error("please connect your wallet");
         return;
@@ -41,16 +60,11 @@ const CreateInstitutionForm = () => {
         return;
       }
 
-      // Create NFT
-      const txn = await createNft({
-        creator_address: address,
-        name: values.name,
-        asset_url: fileURL,
-      });
+      createNft();
 
       //@ts-ignore
-      const asset_index = result["asset-index"] ?? 1;
-      const transaction_hash = result.txId;
+      const asset_index = 1;
+      const transaction_hash = "";
 
       const data = {
         name: values.name,
